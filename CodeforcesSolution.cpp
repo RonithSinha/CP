@@ -31,62 +31,40 @@ typedef
     tree_order_statistics_node_update>
 orderedList;
 
-string solve() {
-  ll n,x;
-  cin>>n>>x;
-  ll a[n],b[n];
-  for(ll i=0;i<n;i++){
-    cin>>a[i];
-    b[i]=a[i];
+bool isMatch(string s, string p) {
+  queue<int> track;
+  bool star=false;
+  for(int i=0;i<p.size();i++) {
+    if(p[i]=='*') star=true;
+    else {
+      if(star){
+        for(int j=0;j<s.size();j++){
+          if(s[j]==p[j]) track.push(j);
+        }
+      }
+    }
   }
-  sort(a,a+n);
-  for(ll i=0;i<n;i++){
-    //printf("%lld %lld %lld %lld\n",abs(a[i]-a[0]),abs(a[i]-a[n-1]),b[i],a[i]);
-    if(abs(a[i]-a[0])<x&&abs(a[i]-a[n-1])<x&&a[i]!=b[i]) return "NO";
-  }
-  return "YES";
+}
+
+void solve() {
+  
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int t=1;
-    cin>>t;
+    //cin>>t;
     while(t--){
-        cout<<solve();
+        //cout<<solve();
+        solve();
         cout<<"\n";
     }
 	return 0;
 }
 /*
+5
+2 6 1 5 9
 3
-2 4
-3 7
-2 6
-4 2
-3 11
-2 1 7
-
-1
-6 4
-8 2 2 7 4 5
-
-1
-5 4
-5 8 7 8 4
-
-4
-3 3
-3 2 1
-4 3
-1 2 3 4
-5 2
-5 1 2 3 4
-5 4
-1 2 3 4 4
-
-1
-5 3
-4 5 8 7 8
-
+4 1 9
 */
