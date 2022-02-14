@@ -16,6 +16,7 @@
 
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
+#define NIL -1
 
 typedef long long int ll;
 typedef unsigned long long int ull;
@@ -31,40 +32,37 @@ typedef
     tree_order_statistics_node_update>
 orderedList;
 
-bool isMatch(string s, string p) {
-  queue<int> track;
-  bool star=false;
-  for(int i=0;i<p.size();i++) {
-    if(p[i]=='*') star=true;
-    else {
-      if(star){
-        for(int j=0;j<s.size();j++){
-          if(s[j]==p[j]) track.push(j);
-        }
-      }
+ll solve() {
+    ll n, l = 0;
+    cin >> n;
+    ll p[n + 5], d[n + 5];
+    for (ll i = 0; i < n; i++) {
+        cin >> p[i];
+        d[i] = p[i];
     }
-  }
-}
-
-void solve() {
-  
+    if (n == 3){
+        if (p[1] % 2 == 1) return -1;
+        return p[1] / 2;
+    }
+    bool ans = true;
+    for (ll i = 1; i < n - 1; i++) if (p[i] > 1) ans = 0;
+    if (ans) return -1;
+    for (ll i = 1; i < n - 1; i++) l += (p[i] + 1) / 2;
+    return l;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    // ios_base::sync_with_stdio(false);
+    // cin.tie(NULL);
     int t=1;
-    //cin>>t;
+    cin>>t;
     while(t--){
-        //cout<<solve();
-        solve();
+        //solve();
+        cout<<solve();
         cout<<"\n";
     }
 	return 0;
 }
 /*
-5
-2 6 1 5 9
-3
-4 1 9
+
 */
