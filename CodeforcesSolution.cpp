@@ -32,37 +32,27 @@ typedef
     tree_order_statistics_node_update>
 orderedList;
 
-ll solve() {
-    ll n, l = 0;
-    cin >> n;
-    ll p[n + 5], d[n + 5];
-    for (ll i = 0; i < n; i++) {
-        cin >> p[i];
-        d[i] = p[i];
-    }
-    if (n == 3){
-        if (p[1] % 2 == 1) return -1;
-        return p[1] / 2;
-    }
-    bool ans = true;
-    for (ll i = 1; i < n - 1; i++) if (p[i] > 1) ans = 0;
-    if (ans) return -1;
-    for (ll i = 1; i < n - 1; i++) l += (p[i] + 1) / 2;
-    return l;
+void solve() {
+    
 }
+
 
 int main() {
     // ios_base::sync_with_stdio(false);
     // cin.tie(NULL);
     int t=1;
-    cin>>t;
+    //cin>>t;
     while(t--){
-        //solve();
-        cout<<solve();
-        cout<<"\n";
+        solve();
+        //cout<<solve();
+        //cout<<"\n";
     }
 	return 0;
 }
 /*
-
+4 4
+5 5 3 3
+1 1 5 3
+2 2 5 4
+2 2 4 4
 */
